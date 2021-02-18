@@ -1,6 +1,8 @@
+#Bibliotecas
 import networkx as nx
 import matplotlib.pyplot as plt
 
+#Criação do grafo
 G = nx.Graph()
 
 G.add_node('v1')
