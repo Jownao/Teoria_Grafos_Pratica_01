@@ -4,3 +4,6 @@
 
 |   Integrantes  |Johnny William                 |Paulo Vitor                  |
 |----------------|-------------------------------|-----------------------------|
+
+## Representação do Grafo
+A representação do grafo em Python utilizando a biblioteca [NetworkX](https://networkx.org/) está contida no arquivo grafo.py.
