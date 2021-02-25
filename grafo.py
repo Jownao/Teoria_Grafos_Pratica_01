@@ -18,6 +18,6 @@ G.add_edge('v4','v5')
 G.add_edge('v5','v1')
 G.add_edge('v2','v4')
 
-plt.figure(2)
+plt.figure(1)
 nx.draw_networkx(G, pos=nx.spring_layout(G), with_labels=True)
 plt.show()
