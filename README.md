@@ -6,4 +6,4 @@
 |----------------|-------------------------------|-----------------------------|
 
 ## Representação do Grafo
-A representação do grafo em Python utilizando a biblioteca [NetworkX](https://networkx.org/) está contida no arquivo grafo.py.
+A representação do grafo em Python utilizando a biblioteca [NetworkX](https://networkx.org/) está contida no arquivo [grafo.py](https://github.com/Jownao/Teoria_Grafos_Pratica_01/blob/main/grafo.py).
