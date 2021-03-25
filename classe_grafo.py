@@ -107,7 +107,33 @@ class Grafo():
         G.add_nodes_from(vertices)
         G.add_edges_from(arestas)
         return Grafo(vertices, arestas, digrafo, valorado, G)
+    def imprimir_grafo(self):
+        plt.figure(1)
+        nx.draw_networkx(self.G, pos=nx.spring_layout(self.G))
+        plt.show()
     
+    def informacoes(self):
+        print("-"*25,"\nVértices.")
+        for vertice in self.vertices:
+            print(f"\'{vertice}\'",end=" ")
+        print()
+        print("-"*25,"\nArestas.")
+        if not self.valorado:
+            for v_ini, v_fim in self.arestas:
+                print(f"\'{v_ini} - {v_fim}\'")
+        else:
+            for v_ini, v_fim, peso in self.arestas:
+                print(f"\'{v_ini} - {v_fim}",end=" - ")
+            for key in peso:
+                print(f"{peso[key]}\'")
+        print()
+        print("-"*25,f"\nDigrafo: {self.digrafo}")
+        print("-"*25,f"\nValorado: {self.valorado}")
+        print("-"*25,f"\nRegular: {self.ehRegular()}")
+        print("-"*25,f"\nCompleto: {self.ehCompleto()}")
+        print("-"*25,f"\nConexo: {self.ehConexo()}")
+        print("-"*25)
+        self.imprimir_grafo()
     #Métodos Básicos.
     #Regular.
     def ehRegular(self):
@@ -128,11 +154,43 @@ class Grafo():
         return completo
     
     #Conexo.
+    def ehConexo(self):
+        caminhos = self.busca_em_largura()
+        conexo = True
+        if len(caminhos) > 1:
+            conexo = False
+        return conexo
     
     
     #Algoritmos de busca.
     #Em largura.
-    
+    def busca_em_largura(self, vertice_origem="-"):
+        if vertice_origem == "-":
+            vertice = self.vertices[0]
+        else:
+            vertice = vertice_origem
+        adjacentes = [(vertice, list(adjacencias)) for vertice, adjacencias in self.G.adjacency()]
+        caminho = []
+        nao_visitados = self.vertices.copy()
+        while nao_visitados:
+            fila = []
+            visitados = []
+            visitados.append(vertice)
+            fila.append(vertice)
+            while fila:
+                u = fila[0]
+                fila.remove(u)
+                for v, a in adjacentes:
+                    if v == u and v in nao_visitados:
+                        nao_visitados.remove(v)
+                        for va in a:
+                            if va not in visitados:
+                                fila.append(va)
+                                visitados.append(va)
+            caminho.append(visitados)
+            if len(fila) == 0 and len(nao_visitados) > 0:
+                vertice = nao_visitados[0]
+        return caminho
     
     #Em profundidade.
     def busca_em_profundidade(self, vertice_origem="-"):
