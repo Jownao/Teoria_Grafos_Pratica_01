@@ -15,9 +15,9 @@ while True:
     if opcao >= 0 and opcao <= 9:
         if opcao == 1:
             arquivo = input("Digite o nome do arquivo!\n")
-            grafo = Grafo.ler_grafo(arquivo+".txt")
+            grafo = classe_grafo.Grafo.ler_grafo(arquivo+".txt")
         elif opcao == 2:
-            grafo = Grafo.definir_grafo()
+            grafo = classe_grafo.Grafo.definir_grafo()
         elif opcao == 3:
             grafo.informacoes()
         elif opcao == 4:
