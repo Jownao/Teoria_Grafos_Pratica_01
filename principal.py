@@ -21,16 +21,19 @@ while True:
         elif opcao == 3:
             grafo.informacoes()
         elif opcao == 4:
-            print(grafo.ehRegular())
+            print("Regular: ", grafo.ehRegular())
         elif opcao == 5:
-            print(grafo.ehCompleto())
+            print("Completo: ", grafo.ehCompleto())
         elif opcao == 6:
-            print(grafo.ehConexo())
+            print("Conexo: ", grafo.ehConexo())
         elif opcao == 7:
+            print("Busca em largura.")
             print(grafo.busca_em_largura())
         elif opcao == 8:
+            print("Busca em profundidade.")
             print(grafo.busca_em_profundidade())
         elif opcao == 9:
+            print("Menor caminho.")
             print("Método ainda não implementado!")
         else:
             print("Fechando o sistema!")
