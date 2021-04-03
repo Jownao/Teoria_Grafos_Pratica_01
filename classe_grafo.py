@@ -288,7 +288,10 @@ class Grafo():
         return adjacentes, pesos
     
     def vertice_origem(self):
-        opcao = int(input("Deseja buscar um vértice específico?\n[0] - Não\n[1] - Sim\n"))
+        while True:
+            opcao = int(input("Deseja buscar um vértice específico?\n[0] - Não\n[1] - Sim\n"))
+            if opcao == 0 or opcao == 1:
+                break
         if opcao:
             while True:
                 vertice = input("Informe o vértice: ")
