@@ -35,8 +35,9 @@ while True:
             vo = grafo.vertice_origem()
             print(grafo.busca_em_profundidade(vo))
         elif opcao == 9:
-            print("Menor caminho.")
-            print("Método ainda não implementado!")
+            print("Menor caminho - Método de Dijkstra.")
+            vo = grafo.vertice_origem()
+            grafo.dijkstra(vo)
         else:
             print("Fechando o sistema!")
             break

@@ -222,8 +222,58 @@ class Grafo():
             if len(pilha) == 0 and len(nao_visitados) > 0:
                 vertice = nao_visitados[0]
         return caminho
-#Menor caminho(Djikstra).
     
+    #Menor caminho - Djikstra.
+    def dijkstra(self, vo = None):
+        vertices = [(v) for v in self.G.nodes]
+        distancias = [float('inf') for v in self.G.nodes]
+        s = [('') for v in self.G.nodes]
+        path = [('') for v in self.G.nodes]
+        nao_visitados = [(v) for v in self.G.nodes]
+        if vo == None:
+            vertice_origem = vertices[0]
+        else:
+            vertice_origem = vo
+        posicao = vertices.index(vertice_origem)
+        distancias[posicao] = 0
+        s[posicao] = 'x'
+        path[posicao] = '-'
+        nao_visitados.remove(vertice_origem)
+        vertice_atual = vertice_origem
+        for v in vertices:
+            a, p = self.adjacentes_pesos(v)
+            if len(a[0]) == 0 and v in nao_visitados:
+                nao_visitados.remove(v)
+        adjacentes, pesos = self.adjacentes_pesos(vertice_atual)
+        if len(adjacentes[0]) > 0:
+            while nao_visitados:
+                adjacentes, pesos = self.adjacentes_pesos(vertice_atual)
+                adj = []
+                p = []
+                for i, v in enumerate(adjacentes):
+                    for j, va in enumerate(v):
+                        if va in nao_visitados:
+                            adj.append(adjacentes[0][j])
+                            p.append(pesos[0][j])
+                for i, va in enumerate(adj):
+                    if distancias[vertices.index(va)] > distancias[vertices.index(vertice_atual)] + p[i]:
+                        distancias[vertices.index(va)] = distancias[vertices.index(vertice_atual)] + p[i]
+                        path[vertices.index(va)] = vertice_atual
+                distancia_minima = float("inf")
+                for v in nao_visitados:
+                    posicao = vertices.index(v)
+                    if distancias[posicao] < distancia_minima:
+                        distancia_minima = distancias[posicao]
+                        vertice_atual = v        
+                posicao = vertices.index(vertice_atual)
+                s[posicao] = "X"
+                nao_visitados.remove(vertice_atual)
+        print(f"Vértice de origem: {vertice_origem}")
+        print('|','-'*61,'|')
+        print("| Vértice\t|\tS\t| Distância\t|\tPath\t|")
+        for i in range(len(vertices)):
+            print(f"|\t{vertices[i]}\t|\t{s[i]}\t|\t{distancias[i]}\t|\t{path[i]}\t|")
+        print('|','-'*61,'|')
     
     def adjacentes_pesos(self, vertice):
         adjacentes = []
