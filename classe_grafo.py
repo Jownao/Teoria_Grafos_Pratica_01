@@ -107,6 +107,7 @@ class Grafo():
         G.add_nodes_from(vertices)
         G.add_edges_from(arestas)
         return Grafo(vertices, arestas, digrafo, valorado, G)
+    
     def imprimir_grafo(self):
         plt.figure(1)
         nx.draw_networkx(self.G, pos=nx.spring_layout(self.G))
@@ -134,6 +135,7 @@ class Grafo():
         print("-"*25,f"\nConexo: {self.ehConexo()}")
         print("-"*25)
         self.imprimir_grafo()
+    
     #Métodos Básicos.
     #Regular.
     def ehRegular(self):
@@ -160,7 +162,6 @@ class Grafo():
         if len(caminhos) > 1:
             conexo = False
         return conexo
-    
     
     #Algoritmos de busca.
     #Em largura.
