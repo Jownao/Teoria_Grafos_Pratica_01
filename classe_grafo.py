@@ -221,3 +221,30 @@ class Grafo():
             if len(pilha) == 0 and len(nao_visitados) > 0:
                 vertice = nao_visitados[0]
         return caminho
+#Menor caminho(Djikstra).
+    
+    
+    def adjacentes_pesos(self, vertice):
+        adjacentes = []
+        pesos = []
+        for v, a in self.G.adjacency():
+            if v == vertice:
+                adjacentes.append(list(a.keys()))
+                if self.valorado:
+                    pesos.append(list(a.values()))
+                else:
+                    pesos.append([1] * len(a))
+        return adjacentes, pesos
+    
+    def vertice_origem(self):
+        opcao = int(input("Deseja buscar um vértice específico?\n[0] - Não\n[1] - Sim\n"))
+        if opcao:
+            while True:
+                vertice = input("Informe o vértice: ")
+                if vertice in self.vertices:
+                    break
+                else:
+                    print("O vértice informado não está presente no grafo, por favor, informe outro!")
+        else:
+            vertice = None
+        return vertice
