@@ -292,6 +292,8 @@ class Grafo():
             opcao = int(input("Deseja buscar um vértice específico?\n[0] - Não\n[1] - Sim\n"))
             if opcao == 0 or opcao == 1:
                 break
+            else:
+                print("Opção inválida, por favor, tente novamente!")
         if opcao:
             while True:
                 vertice = input("Informe o vértice: ")
