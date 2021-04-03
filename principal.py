@@ -28,10 +28,12 @@ while True:
             print("Conexo: ", grafo.ehConexo())
         elif opcao == 7:
             print("Busca em largura.")
-            print(grafo.busca_em_largura())
+            vo = grafo.vertice_origem()
+            print(grafo.busca_em_largura(vo))
         elif opcao == 8:
             print("Busca em profundidade.")
-            print(grafo.busca_em_profundidade())
+            vo = grafo.vertice_origem()
+            print(grafo.busca_em_profundidade(vo))
         elif opcao == 9:
             print("Menor caminho.")
             print("Método ainda não implementado!")
