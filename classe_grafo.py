@@ -164,8 +164,8 @@ class Grafo():
     
     #Algoritmos de busca.
     #Em largura.
-    def busca_em_largura(self, vertice_origem="-"):
-        if vertice_origem == "-":
+    def busca_em_largura(self, vertice_origem = None):
+        if vertice_origem == None:
             vertice = self.vertices[0]
         else:
             vertice = vertice_origem
@@ -193,8 +193,8 @@ class Grafo():
         return caminho
     
     #Em profundidade.
-    def busca_em_profundidade(self, vertice_origem="-"):
-        if vertice_origem == "-":
+    def busca_em_profundidade(self, vertice_origem = None):
+        if vertice_origem == None:
             vertice = self.vertices[0]
         else:
             vertice = vertice_origem
